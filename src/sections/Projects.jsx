@@ -41,13 +41,13 @@ const PROJECTS = [
   github: "https://github.com/Jaysinghgautam/jaysingh-mega-project.git",
   demo: "https://jaysingh-mega-project.vercel.app/",
 },
-{
-  icon: "📦",
-  title: "Amazon Homepage Clone",
-  desc: "Built a fully responsive clone of Amazon's homepage using HTML and CSS, replicating modern e-commerce design patterns, product showcases, navigation menus, and promotional sections. Focused on responsive web design, layout structuring, and UI development best practices.",
-  stack: ["HTML5", "CSS3", "Flexbox", "Media Queries"],
-  github: "https://github.com/Jaysinghgautam/Amazon.git",
-  demo: "#",
+ {
+  icon: "🌟",
+  title: "Bhavishya Educational Website",
+  desc: "Developed a modern educational website focused on providing learning resources, courses, and student-friendly content. Designed a clean and responsive user interface using HTML and CSS, ensuring an engaging user experience across desktop and mobile devices.",
+  stack: ["HTML5", "CSS3", "Responsive Design"],
+  github: "https://github.com/Jaysinghgautam/assesment2",
+  demo: "https://jay-bhavishya.vercel.app/",
 },
 ];
 
