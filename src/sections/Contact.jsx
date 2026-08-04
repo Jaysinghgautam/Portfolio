@@ -1,11 +1,29 @@
- import { useState } from "react";
+ import { useState,useEffect } from "react";
+import axios from "axios";
 import useReveal from "../hooks/useReveal";
 
+
 const CONTACT_INFO = [
-  { icon: "✉️", label: "EMAIL", value: "gjaysingh53@gmail.com" },
-  { icon: "📍", label: "LOCATION", value: "Uttar Pradesh, India" },
-  { icon: "🐙", label: "GITHUB", value: "github.com/jaysinghgautam" },
-  { icon: "💼", label: "LINKEDIN", value: "linkedin.com/in/jaysinghgautam" },
+  {
+    icon: "✉️",
+    label: "Email",
+    value: "gjaysingh53@gmail.com",
+  },
+  {
+    icon: "📍",
+    label: "Location",
+    value: "Uttar Pradesh, India",
+  },
+  {
+    icon: "🐙",
+    label: "GitHub",
+    value: "github.com/jaysinghgautam",
+  },
+  {
+    icon: "💼",
+    label: "LinkedIn",
+    value: "linkedin.com/in/jaysinghgautam",
+  },
 ];
 
 export default function Contact() {
@@ -18,223 +36,215 @@ export default function Contact() {
     message: "",
   });
 
-  const [sent, setSent] = useState(false);
-  const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const onChange = (e) => {
-    setForm({
-      ...form,
+  const [status, setStatus] = useState({
+    type: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setForm((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    setResult("Sending...");
+    setLoading(true);
+    setStatus({
+      type: "",
+      message: "",
+    });
 
     try {
-      const formData = new FormData();
-
-      formData.append(
-        "access_key",
-        "eea20c15-eced-4865-b345-cb7e4a911933"
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/sendMail`,
+        form
       );
 
-      formData.append("name", form.name);
-      formData.append("email", form.email);
-      formData.append("subject", form.subject);
-      formData.append("message", form.message);
+      setStatus({
+        type: "success",
+        message: res.data.message || "Message sent successfully!",
+      });
 
-      const response = await fetch(
-        "https://api.web3forms.com/submit",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      const data = await response.json();
-
-      if (data.success) {
-        setSent(true);
-        setResult("✅ Message sent successfully!");
-
-        setForm({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-        });
-
-        setTimeout(() => {
-          setSent(false);
-          setResult("");
-        }, 4000);
-      } else {
-        console.log(data);
-        setResult("❌ Failed to send message");
-      }
+      setForm({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
     } catch (error) {
-      console.error(error);
-      setResult("❌ Something went wrong");
+      setStatus({
+        type: "error",
+        message:
+          error.response?.data?.message ||
+          "Unable to send message. Please try again.",
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
-  const inputCls =
-    "w-full bg-[rgba(99,179,237,0.04)] border border-[rgba(99,179,237,0.18)] rounded-xl px-4 py-3 text-slate-100 placeholder-slate-600 text-sm font-sans focus:outline-none focus:border-[rgba(99,179,237,0.5)] focus:ring-1 focus:ring-[rgba(99,179,237,0.3)] transition-all duration-200";
+  useEffect(() => {
+  if (status.message) {
+    const timer = setTimeout(() => {
+      setStatus({
+        type: "",
+        message: "",
+      });
+    }, 3000); // 3 seconds
+
+    return () => clearTimeout(timer);
+  }
+}, [status]);
+
+  const inputStyle =
+    "w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-blue-500";
 
   return (
-    <section id="contact" className="relative z-10 py-24">
-      <div className="max-w-4xl mx-auto px-6">
-        <p className="font-mono text-[#9f7aea] text-xs tracking-[3px] uppercase mb-3">
-          // get in touch
-        </p>
-
+    <section id="contact" className="py-24">
+      <div className="max-w-6xl mx-auto px-6">
         <h2
           ref={ref}
-          className={`text-4xl sm:text-5xl font-bold mb-14 tracking-tight transition-all duration-700 ${
+          className={`text-4xl font-bold text-center mb-12 transition-all duration-700 ${
             visible
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-8"
           }`}
         >
-          Let's{" "}
-          <span className="bg-gradient-to-r from-[#63b3ed] via-[#9f7aea] to-[#f687b3] bg-clip-text text-transparent">
-            Work Together
-          </span>
+          Contact Me
         </h2>
 
-        <div
-          className={`grid lg:grid-cols-5 gap-10 transition-all duration-700 delay-150 ${
-            visible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
-          }`}
-        >
-          {/* Left Side */}
-          <div className="lg:col-span-2">
-            <h3 className="text-xl font-bold text-slate-100 mb-3">
-              Open to new roles
+        <div className="grid lg:grid-cols-2 gap-10">
+          {/* Contact Info */}
+
+          <div
+            className={`transition-all duration-700 ${
+              visible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-8"
+            }`}
+          >
+            <h3 className="text-2xl font-semibold mb-4 text-white">
+              Get In Touch
             </h3>
 
-            <p className="text-sm text-slate-400 leading-relaxed mb-6">
-              Whether you have a project, a full-time role, or just want to talk
-              tech — my inbox is always open.
+            <p className="text-slate-400 mb-8">
+              Have a project, internship opportunity or just want to say hello?
+              Fill out the form and I'll get back to you soon.
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {CONTACT_INFO.map((item) => (
                 <div
                   key={item.label}
-                  className="flex items-center gap-3 bg-[rgba(99,179,237,0.05)] border border-[rgba(99,179,237,0.12)] rounded-xl px-4 py-3"
+                  className="flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-900 p-4"
                 >
-                  <span className="text-lg">{item.icon}</span>
+                  <span className="text-2xl">{item.icon}</span>
 
                   <div>
-                    <p className="font-mono text-[10px] text-slate-500 tracking-widest">
-                      {item.label}
-                    </p>
+                    <p className="text-sm text-slate-400">{item.label}</p>
 
-                    <p className="text-sm text-slate-200 font-medium">
-                      {item.value}
-                    </p>
+                    <p className="text-white">{item.value}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right Side Form */}
-          <div className="lg:col-span-3 bg-[rgba(255,255,255,0.02)] border border-[rgba(99,179,237,0.12)] rounded-2xl p-7">
-            <form onSubmit={onSubmit} className="space-y-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-slate-400 text-xs mb-1.5 font-mono tracking-wide">
-                    Full Name *
-                  </label>
+          {/* Form */}
 
-                  <input
-                    name="name"
-                    type="text"
-                    required
-                    placeholder="John Doe"
-                    value={form.name}
-                    onChange={onChange}
-                    className={inputCls}
-                  />
-                </div>
+          <div
+            className={`rounded-2xl border border-slate-800 bg-slate-950 p-8 transition-all duration-700 ${
+              visible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-8"
+            }`}
+          >
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="block text-sm text-slate-300 mb-2">
+                  Full Name
+                </label>
 
-                <div>
-                  <label className="block text-slate-400 text-xs mb-1.5 font-mono tracking-wide">
-                    Email *
-                  </label>
-
-                  <input
-                    name="email"
-                    type="email"
-                    required
-                    placeholder="john@example.com"
-                    value={form.email}
-                    onChange={onChange}
-                    className={inputCls}
-                  />
-                </div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter your full name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  className={inputStyle}
+                />
               </div>
 
               <div>
-                <label className="block text-slate-400 text-xs mb-1.5 font-mono tracking-wide">
+                <label className="block text-sm text-slate-300 mb-2">
+                  Email Address
+                </label>
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email address"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  className={inputStyle}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-slate-300 mb-2">
                   Subject
                 </label>
 
                 <input
-                  name="subject"
                   type="text"
-                  placeholder="Let's work together!"
+                  name="subject"
+                  placeholder="Enter subject"
                   value={form.subject}
-                  onChange={onChange}
-                  className={inputCls}
+                  onChange={handleChange}
+                  className={inputStyle}
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 text-xs mb-1.5 font-mono tracking-wide">
-                  Message *
+                <label className="block text-sm text-slate-300 mb-2">
+                  Message
                 </label>
 
                 <textarea
+                  rows="6"
                   name="message"
-                  rows={5}
-                  required
-                  placeholder="Tell me about your project or opportunity..."
+                  placeholder="Write your message here..."
                   value={form.message}
-                  onChange={onChange}
-                  className={`${inputCls} resize-y`}
-                />
+                  onChange={handleChange}
+                  required
+                  className={`${inputStyle} resize-none`}
+                ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-xl font-bold text-slate-100 tracking-wide transition-all duration-300 hover:-translate-y-0.5 active:scale-95"
-                style={{
-                  background:
-                    "linear-gradient(135deg,#2b4c7e,#553c9a)",
-                  boxShadow:
-                    "0 6px 24px rgba(99,102,241,0.35)",
-                }}
+                disabled={loading}
+                className="w-full rounded-lg bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-600"
               >
-                Send Message →
+                {loading ? "Sending..." : "Send Message"}
               </button>
 
-              {result && (
+              {status.message && (
                 <div
-                  className={`text-center text-sm rounded-xl py-3 ${
-                    sent
-                      ? "text-emerald-400 bg-[rgba(16,185,129,0.1)] border border-[rgba(16,185,129,0.3)]"
-                      : "text-red-400 bg-[rgba(239,68,68,0.1)] border border-[rgba(239,68,68,0.3)]"
+                  className={`rounded-lg p-3 text-center ${
+                    status.type === "success"
+                      ? "bg-green-100 text-green-700"
+                      : "bg-red-100 text-red-700"
                   }`}
                 >
-                  {result}
+                  {status.message}
                 </div>
               )}
             </form>
