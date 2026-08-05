@@ -89,7 +89,7 @@ export default function Hero() {
         "
           >
             <img
-              src="https://res.cloudinary.com/drc0gwhz9/image/upload/v1759297895/WhatsApp_Image_2025-10-01_at_11.20.54_cbc36313_o9vnqw.jpg"
+              src="https://res.cloudinary.com/drc0gwhz9/image/upload/v1785917007/1775970070954_rjytbt.png"
               alt="Profile"
               className="w-full h-full object-cover"
             />

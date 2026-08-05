@@ -14,8 +14,8 @@ const PROJECTS = [
   title: "Vyombotics Educational Website",
   desc: "Designed and developed a responsive educational platform enabling students to discover courses, access learning content, and engage with skill-based programs. Integrated Firebase for authentication, database management, and scalable real-time functionality.",
   stack: ["React.js", "Firebase", "Tailwind CSS", "JavaScript"],
-  github: "https://github.com/vyombotics-org/vyombotics.git",
-  demo: "https://vyombotics.in",
+  github: "https://github.com/vyombotics-org/Vyombotics-main.gitt",
+  demo: "https://vyombotics-main.vercel.app/",
 },
  {
   icon: "🌐",
@@ -23,7 +23,7 @@ const PROJECTS = [
   desc: "Developed and deployed the official conference website for Rajkiya Engineering College Sonbhadra, providing information about events, paper submissions, speakers, schedules, and registration. Designed a responsive and user-friendly interface to ensure seamless access across all devices.",
   stack: ["React.js", "Node.js", "MongoDB", "Tailwind CSS"],
   github: "https://github.com/Atul7307/Conference-Site.git",
-  demo: "https://cncrecs.in",
+  demo: "https://conference-site.vercel.app/",
 },
 {
   icon: "📒",
