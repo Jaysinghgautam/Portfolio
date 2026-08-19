@@ -7,7 +7,7 @@ const PROJECTS = [
   desc: "Built a scalable e-commerce platform with product catalog, user authentication, shopping cart, secure payment integration, order management, and admin dashboard for inventory and sales tracking.",
   stack: ["MongoDB", "Express.js", "React.js", "Node.js", "Razorpay"],
   github: "https://github.com/Jaysinghgautam/E-ComerceWebsite.git",
-  demo: "https://jaysingh-ministock.vercel.app/",
+  demo: "https://cartneo.vercel.app/",
 },
   {
   icon: "📚",
