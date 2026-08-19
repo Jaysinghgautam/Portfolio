@@ -1,54 +1,61 @@
 import useReveal from "../hooks/useReveal";
 
 const PROJECTS = [
- {
-  icon: "🛍️",
-  title: "E-Commerce Website",
-  desc: "Built a scalable e-commerce platform with product catalog, user authentication, shopping cart, secure payment integration, order management, and admin dashboard for inventory and sales tracking.",
-  stack: ["MongoDB", "Express.js", "React.js", "Node.js", "Razorpay"],
-  github: "https://github.com/Jaysinghgautam/E-ComerceWebsite.git",
-  demo: "https://cartneo.vercel.app/",
-},
   {
-  icon: "📚",
-  title: "Vyombotics Educational Website",
-  desc: "Designed and developed a responsive educational platform enabling students to discover courses, access learning content, and engage with skill-based programs. Integrated Firebase for authentication, database management, and scalable real-time functionality.",
-  stack: ["React.js", "Firebase", "Tailwind CSS", "JavaScript"],
-  github: "https://github.com/vyombotics-org/Vyombotics-main.gitt",
-  demo: "https://vyombotics-main.vercel.app/",
-},
- {
-  icon: "🌐",
-  title: "CNCRECS Conference Website",
-  desc: "Developed and deployed the official conference website for Rajkiya Engineering College Sonbhadra, providing information about events, paper submissions, speakers, schedules, and registration. Designed a responsive and user-friendly interface to ensure seamless access across all devices.",
-  stack: ["React.js", "Node.js", "MongoDB", "Tailwind CSS"],
-  github: "https://github.com/Atul7307/Conference-Site.git",
-  demo: "https://conference-site.vercel.app/",
-},
-{
-  icon: "📒",
-  title: "Secure Notes Management System",
-  desc: "Built a MERN stack application for secure note creation and management with user authentication and authorization. Features include CRUD operations, protected user accounts, responsive design, and efficient data storage to provide a smooth and personalized note-taking experience.",
-  stack: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT", "Tailwind CSS"],
-  github: "https://github.com/Jaysinghgautam/jaysingh-Notes.git",
-  demo: "https://jaysingh-notes.vercel.app/login",
-},
- {
-  icon: "⚡",
-  title: "Mega Project Management Platform",
-  desc: "Developed a feature-rich web application using React and Appwrite, incorporating secure authentication, real-time database operations, file storage, and role-based access control. Built a scalable and responsive user interface to deliver a seamless user experience across devices.",
-  stack: ["React.js", "Appwrite", "JavaScript", "Tailwind CSS"],
-  github: "https://github.com/Jaysinghgautam/jaysingh-mega-project.git",
-  demo: "https://jaysingh-mega-project.vercel.app/",
-},
- {
-  icon: "🌟",
-  title: "Bhavishya Educational Website",
-  desc: "Developed a modern educational website focused on providing learning resources, courses, and student-friendly content. Designed a clean and responsive user interface using HTML and CSS, ensuring an engaging user experience across desktop and mobile devices.",
-  stack: ["HTML5", "CSS3", "Responsive Design"],
-  github: "https://github.com/Jaysinghgautam/assesment2",
-  demo: "https://jay-bhavishya.vercel.app/",
-},
+    icon: "🛍️",
+    title: "E-Commerce Website",
+    desc: "Built a scalable e-commerce platform with product catalog, user authentication, shopping cart, secure payment integration, order management, and admin dashboard for inventory and sales tracking.",
+    stack: ["MongoDB", "Express.js", "React.js", "Node.js", "Razorpay"],
+    github: "https://github.com/Jaysinghgautam/E-ComerceWebsite.git",
+    demo: "https://cartneo.vercel.app/",
+  },
+  {
+    icon: "📚",
+    title: "Vyombotics Educational Website",
+    desc: "Designed and developed a responsive educational platform enabling students to discover courses, access learning content, and engage with skill-based programs. Integrated Firebase for authentication, database management, and scalable real-time functionality.",
+    stack: ["React.js", "Firebase", "Tailwind CSS", "JavaScript"],
+    github: "https://github.com/vyombotics-org/Vyombotics-main.gitt",
+    demo: "https://vyombotics-main.vercel.app/",
+  },
+  {
+    icon: "📒",
+    title: "Secure Notes Management System",
+    desc: "Built a MERN stack application for secure note creation and management with user authentication and authorization. Features include CRUD operations, protected user accounts, responsive design, and efficient data storage to provide a smooth and personalized note-taking experience.",
+    stack: [
+      "MongoDB",
+      "Express.js",
+      "React.js",
+      "Node.js",
+      "JWT",
+      "Tailwind CSS",
+    ],
+    github: "https://github.com/Jaysinghgautam/jaysingh-Notes.git",
+    demo: "https://jaysingh-notes.vercel.app",
+  },
+  {
+    icon: "🌐",
+    title: "CNCRECS Conference Website",
+    desc: "Developed and deployed the official conference website for Rajkiya Engineering College Sonbhadra, providing information about events, paper submissions, speakers, schedules, and registration. Designed a responsive and user-friendly interface to ensure seamless access across all devices.",
+    stack: ["React.js", "Node.js", "MongoDB", "Tailwind CSS"],
+    github: "https://github.com/Atul7307/Conference-Site.git",
+    demo: "https://conference-site.vercel.app/",
+  },
+  {
+    icon: "⚡",
+    title: "Mega Project Management Platform",
+    desc: "Developed a feature-rich web application using React and Appwrite, incorporating secure authentication, real-time database operations, file storage, and role-based access control. Built a scalable and responsive user interface to deliver a seamless user experience across devices.",
+    stack: ["React.js", "Appwrite", "JavaScript", "Tailwind CSS"],
+    github: "https://github.com/Jaysinghgautam/jaysingh-mega-project.git",
+    demo: "https://jaysingh-mega-project.vercel.app/",
+  },
+  {
+    icon: "🌟",
+    title: "Bhavishya Educational Website",
+    desc: "Developed a modern educational website focused on providing learning resources, courses, and student-friendly content. Designed a clean and responsive user interface using HTML and CSS, ensuring an engaging user experience across desktop and mobile devices.",
+    stack: ["HTML5", "CSS3", "Responsive Design"],
+    github: "https://github.com/Jaysinghgautam/assesment2",
+    demo: "https://jay-bhavishya.vercel.app/",
+  },
 ];
 
 function ProjectCard({ project, delay }) {
@@ -67,8 +74,12 @@ function ProjectCard({ project, delay }) {
 
       <div className="p-6">
         <div className="text-3xl mb-3">{project.icon}</div>
-        <h3 className="text-base font-bold text-slate-100 mb-2">{project.title}</h3>
-        <p className="text-sm text-slate-500 leading-relaxed mb-4">{project.desc}</p>
+        <h3 className="text-base font-bold text-slate-100 mb-2">
+          {project.title}
+        </h3>
+        <p className="text-sm text-slate-500 leading-relaxed mb-4">
+          {project.desc}
+        </p>
 
         {/* Stack tags */}
         <div className="flex flex-wrap gap-1.5 mb-5">
