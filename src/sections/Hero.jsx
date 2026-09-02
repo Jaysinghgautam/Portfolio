@@ -89,7 +89,7 @@ export default function Hero() {
         "
           >
             <img
-              src="https://res.cloudinary.com/drc0gwhz9/image/upload/v1785917007/1775970070954_rjytbt.png"
+              src="https://res.cloudinary.com/drc0gwhz9/image/upload/v1788281635/Professional_Software_Engineer_at_Work_amks8u.png"
               alt="Profile"
               className="w-full h-full object-cover"
             />
@@ -99,3 +99,4 @@ export default function Hero() {
     </section>
   );
 }
+

@@ -2,6 +2,14 @@ import useReveal from "../hooks/useReveal";
 
 const PROJECTS = [
   {
+    icon: "🏨",
+    title: "Hotel Booking Website",
+    desc: "Built a full-stack hotel booking platform with hotel listings, room search and filtering, user authentication, booking management, secure online payments, and an admin dashboard for managing hotels, rooms, and reservations.",
+    stack: ["MongoDB", "Express.js", "React.js", "Node.js", "Razorpay"],
+    github: "https://github.com/Jaysinghgautam/Hotel-booking-App.git",
+    demo: "https://stay-to-night.vercel.app/",
+  },
+  {
     icon: "🛍️",
     title: "E-Commerce Website",
     desc: "Built a scalable e-commerce platform with product catalog, user authentication, shopping cart, secure payment integration, order management, and admin dashboard for inventory and sales tracking.",
@@ -40,14 +48,14 @@ const PROJECTS = [
     github: "https://github.com/Atul7307/Conference-Site.git",
     demo: "https://conference-site.vercel.app/",
   },
-  {
-    icon: "⚡",
-    title: "Mega Project Management Platform",
-    desc: "Developed a feature-rich web application using React and Appwrite, incorporating secure authentication, real-time database operations, file storage, and role-based access control. Built a scalable and responsive user interface to deliver a seamless user experience across devices.",
-    stack: ["React.js", "Appwrite", "JavaScript", "Tailwind CSS"],
-    github: "https://github.com/Jaysinghgautam/jaysingh-mega-project.git",
-    demo: "https://jaysingh-mega-project.vercel.app/",
-  },
+  // {
+  //   icon: "⚡",
+  //   title: "Mega Project Management Platform",
+  //   desc: "Developed a feature-rich web application using React and Appwrite, incorporating secure authentication, real-time database operations, file storage, and role-based access control. Built a scalable and responsive user interface to deliver a seamless user experience across devices.",
+  //   stack: ["React.js", "Appwrite", "JavaScript", "Tailwind CSS"],
+  //   github: "https://github.com/Jaysinghgautam/jaysingh-mega-project.git",
+  //   demo: "https://jaysingh-mega-project.vercel.app/",
+  // },
   {
     icon: "🌟",
     title: "Bhavishya Educational Website",
