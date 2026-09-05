@@ -10,11 +10,9 @@ import Experience from "./sections/Experience";
 export default function App() {
   return (
     <div className="bg-[#050810] text-slate-200 min-h-screen overflow-x-hidden font-sans">
-      {/* Animated network background — fixed, covers entire page */}
+ 
       <NetworkCanvas />
-
       <Navbar />
-
       <main>
         <Hero />
         <About />
