@@ -20,7 +20,7 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center px-6"
     >
-      <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-12">
+      <div className="max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Left Content */}
         <div
           className="flex-1 text-center md:text-left"

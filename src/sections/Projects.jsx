@@ -1,3 +1,4 @@
+ import { motion } from "framer-motion";
 import useReveal from "../hooks/useReveal";
 
 const PROJECTS = [
@@ -48,14 +49,22 @@ const PROJECTS = [
     github: "https://github.com/Atul7307/Conference-Site.git",
     demo: "https://conference-site.vercel.app/",
   },
-  // {
-  //   icon: "⚡",
-  //   title: "Mega Project Management Platform",
-  //   desc: "Developed a feature-rich web application using React and Appwrite, incorporating secure authentication, real-time database operations, file storage, and role-based access control. Built a scalable and responsive user interface to deliver a seamless user experience across devices.",
-  //   stack: ["React.js", "Appwrite", "JavaScript", "Tailwind CSS"],
-  //   github: "https://github.com/Jaysinghgautam/jaysingh-mega-project.git",
-  //   demo: "https://jaysingh-mega-project.vercel.app/",
-  // },
+  {
+    icon: "📈",
+    title: "Digital Marketing Agency Website",
+    desc: "Developed a modern and responsive digital marketing agency website as an internship project. Designed an engaging user interface with smooth animations, interactive sections, and a clean layout to showcase digital marketing services and improve user experience across devices.",
+    stack: ["React.js", "Tailwind CSS", "JavaScript"],
+    github: "https://github.com/Jaysinghgautam/Digital-marketing-.git",
+    demo: "https://jay-digitalmarketing.vercel.app/",
+  },
+  {
+    icon: "⚡",
+    title: "Mega Project Management Platform",
+    desc: "Developed a feature-rich web application using React and Appwrite, incorporating secure authentication, real-time database operations, file storage, and role-based access control. Built a scalable and responsive user interface to deliver a seamless user experience across devices.",
+    stack: ["React.js", "Appwrite", "JavaScript", "Tailwind CSS"],
+    github: "https://github.com/Jaysinghgautam/jaysingh-mega-project.git",
+    demo: "https://jaysingh-mega-project.vercel.app/",
+  },
   {
     icon: "🌟",
     title: "Bhavishya Educational Website",
@@ -70,21 +79,47 @@ function ProjectCard({ project, delay }) {
   const [ref, visible] = useReveal();
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      className={`group bg-[rgba(255,255,255,0.025)] border border-[rgba(99,179,237,0.1)] rounded-2xl overflow-hidden
-        hover:border-[rgba(99,179,237,0.4)] hover:-translate-y-1 transition-all duration-300
-        ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={
+        visible
+          ? { opacity: 1, y: 0 }
+          : { opacity: 0, y: 50 }
+      }
+      transition={{
+        duration: 0.6,
+        delay: delay / 1000,
+        ease: "easeOut",
+      }}
+      className="group relative bg-[rgba(255,255,255,0.025)] border border-[rgba(99,179,237,0.1)] rounded-2xl overflow-hidden
+        hover:scale-[1.025]
+        hover:shadow-[0_0_30px_rgba(99,179,237,0.18),0_0_60px_rgba(159,122,234,0.12)]
+        transition-all duration-500"
     >
+      {/* 6 Color Gradient Border */}
+      <div
+        className="absolute inset-0 rounded-2xl p-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20"
+        style={{
+          background:
+            "linear-gradient(135deg, #63b3ed, #9f7aea, #f687b3, #68d391, #f6ad55, #fc8181)",
+          WebkitMask:
+            "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          WebkitMaskComposite: "xor",
+          maskComposite: "exclude",
+        }}
+      />
+
       {/* Gradient top strip */}
       <div className="h-1 bg-gradient-to-r from-[#63b3ed] via-[#9f7aea] to-[#f687b3]" />
 
       <div className="p-6">
         <div className="text-3xl mb-3">{project.icon}</div>
+
         <h3 className="text-base font-bold text-slate-100 mb-2">
           {project.title}
         </h3>
+
         <p className="text-sm text-slate-500 leading-relaxed mb-4">
           {project.desc}
         </p>
@@ -105,19 +140,24 @@ function ProjectCard({ project, delay }) {
         <div className="flex gap-3">
           <a
             href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-xs px-4 py-2 rounded-full border border-[rgba(99,179,237,0.25)] text-[#63b3ed] hover:bg-[rgba(99,179,237,0.12)] transition-colors duration-200 font-semibold"
           >
             GitHub
           </a>
+
           <a
             href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-xs px-4 py-2 rounded-full border border-[rgba(99,179,237,0.25)] text-[#63b3ed] hover:bg-[rgba(99,179,237,0.12)] transition-colors duration-200 font-semibold"
           >
             Live Demo
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -126,14 +166,17 @@ export default function Projects() {
 
   return (
     <section id="projects" className="relative z-10 py-24">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         <p className="font-mono text-[#9f7aea] text-xs tracking-[3px] uppercase mb-3">
           // portfolio
         </p>
+
         <h2
           ref={ref}
           className={`text-4xl sm:text-5xl font-bold mb-12 tracking-tight transition-all duration-700 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            visible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8"
           }`}
         >
           Featured{" "}
@@ -144,7 +187,11 @@ export default function Projects() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {PROJECTS.map((p, i) => (
-            <ProjectCard key={p.title} project={p} delay={i * 90} />
+            <ProjectCard
+              key={p.title}
+              project={p}
+              delay={i * 90}
+            />
           ))}
         </div>
       </div>

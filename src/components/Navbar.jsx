@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const NAV_LINKS = ["home", "about", "skills", "projects", "contact"];
+const NAV_LINKS = ["home", "about","experience", "skills", "projects", "contact"];
 
 function scrollTo(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -41,7 +41,7 @@ export default function Navbar() {
     >
       {/* Logo */}
       <span className="font-mono text-[#63b3ed] text-lg font-medium tracking-widest">
-        &lt;dev /&gt;
+        &lt;Jaysingh /&gt;
       </span>
 
       {/* Desktop links */}

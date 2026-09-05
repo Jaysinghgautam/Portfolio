@@ -12,7 +12,7 @@ export default function About() {
 
   return (
     <section id="about" className="relative z-10 py-24">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <p className="font-mono text-[#9f7aea] text-xs tracking-[3px] uppercase mb-3">
           // about me

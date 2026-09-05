@@ -1,3 +1,4 @@
+ 
 import useReveal from "../hooks/useReveal";
 
 const SKILLS = [
@@ -37,7 +38,6 @@ const SKILLS = [
     pct: 75,
     tags: ["AWS", "Docker", "CI/CD", "k8s"],
   },
-   
   {
     icon: "🛠️",
     name: "Other Tools & Libs",
@@ -67,7 +67,7 @@ const SKILLS = [
     icon: "🎨",
     pct: 80,
     tags: ["Flexbox", "Grid", "Animations"],
-  }
+  },
 ];
 
 function SkillCard({ skill, delay }) {
@@ -76,20 +76,30 @@ function SkillCard({ skill, delay }) {
   return (
     <div
       ref={ref}
-      className={`bg-[rgba(255,255,255,0.025)] border border-[rgba(99,179,237,0.1)] rounded-2xl p-5 
+      className={`bg-[rgba(255,255,255,0.025)] border border-[rgba(99,179,237,0.1)] rounded-2xl p-5
         hover:border-[rgba(99,179,237,0.4)] hover:bg-[rgba(99,179,237,0.05)] hover:-translate-y-1
-        transition-all duration-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-      style={{ transitionDelay: `${delay}ms` }}
+        transition-all duration-300 ${
+          visible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
+        }`}
+      style={{
+        transitionDelay: `${delay}ms`,
+      }}
     >
       {/* Header row */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <span className="text-xl">{skill.icon}</span>
+
           <span className="text-sm font-semibold text-slate-200">
             {skill.name}
           </span>
         </div>
-        <span className="font-mono text-xs text-[#9f7aea]">{skill.pct}%</span>
+
+        <span className="font-mono text-xs text-[#9f7aea]">
+          {skill.pct}%
+        </span>
       </div>
 
       {/* Progress bar */}
@@ -123,17 +133,20 @@ export default function Skills() {
 
   return (
     <section id="skills" className="relative z-10 py-24">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         <p className="font-mono text-[#9f7aea] text-xs tracking-[3px] uppercase mb-3">
           // tech stack
         </p>
+
         <h2
           ref={ref}
           className={`text-4xl sm:text-5xl font-bold mb-12 tracking-tight transition-all duration-700 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            visible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8"
           }`}
         >
-          Skills &amp;{" "}
+          Skills &{" "}
           <span className="bg-gradient-to-r from-[#63b3ed] via-[#9f7aea] to-[#f687b3] bg-clip-text text-transparent">
             Technologies
           </span>
@@ -141,10 +154,15 @@ export default function Skills() {
 
         <div className="grid sm:grid-cols-2 gap-4">
           {SKILLS.map((sk, i) => (
-            <SkillCard key={sk.name} skill={sk} delay={i * 80} />
+            <SkillCard
+              key={sk.name}
+              skill={sk}
+              delay={i * 80}
+            />
           ))}
         </div>
       </div>
     </section>
   );
 }
+ 
