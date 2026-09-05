@@ -1,7 +1,7 @@
 import useReveal from "../hooks/useReveal";
 
 const STATS = [
-  { value: "5+", label: "Projects Shipped" },
+  { value: "6+", label: "Projects Shipped" },
   { value: "6+", label: "Months Experience" },
   { value: "10+", label: "Technologies" },
   { value: "99%", label: "Client Satisfaction" },

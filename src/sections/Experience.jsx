@@ -1,4 +1,4 @@
- import useReveal from "../hooks/useReveal";
+import useReveal from "../hooks/useReveal";
 
 const EXPERIENCES = [
   {
@@ -70,9 +70,7 @@ export default function Experience() {
         <h2
           ref={ref}
           className={`text-4xl sm:text-5xl font-bold mb-14 tracking-tight transition-all duration-700 ${
-            visible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           Where I{" "}
